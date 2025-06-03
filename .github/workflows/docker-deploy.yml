@@ -4,23 +4,25 @@ on:
   push:
     branches:
       - master  # эсвэл main
+test:
+  runs-on: ubuntu-latest
+  steps:
+    - uses: actions/checkout@v3
 
-jobs:
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '20'
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '20'
+    - name: Install dependencies
+      run: npm install
 
-      - name: Install dependencies
-        run: npm install
+    - name: Fix htmlhint permission
+      run: chmod +x ./node_modules/.bin/htmlhint
 
-      - name: Run HTML, CSS, and JS linting
-        run: npm test
+    - name: Run HTML, CSS, and JS linting
+      run: npm test
+
 
   build_and_push:
     needs: test

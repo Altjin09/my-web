@@ -2,8 +2,9 @@
   "name": "my-web",
   "version": "1.0.0",
   "scripts": {
-  "test": "npx htmlhint index.html && npx stylelint style.css && npx eslint *.js"
+  "test": "./node_modules/.bin/htmlhint index.html && npx stylelint style.css && npx eslint *.js"
 }
+
 ,
   "devDependencies": {
     "@eslint/js": "^9.28.0",

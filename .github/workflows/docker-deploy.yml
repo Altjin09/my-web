@@ -4,7 +4,9 @@ on:
   push:
     branches:
       - master  # эсвэл main
-test:
+
+jobs:
+  test:
   runs-on: ubuntu-latest
   steps:
     - uses: actions/checkout@v3
@@ -22,7 +24,6 @@ test:
 
     - name: Run HTML, CSS, and JS linting
       run: npm test
-
 
   build_and_push:
     needs: test

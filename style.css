@@ -1,7 +1,10 @@
 body {
-  font-family Arial;
-  color: red
-  padding: 10px
+  font-family: Arial, sans-serif;
+  background: linear-gradient(to right, #f9f9f9, #cce7ff);
+  margin: 0;
+  padding: 0;
+  color: #333;
+  text-align: center;
 }
 
 header {

@@ -2,10 +2,14 @@
   "name": "my-web",
   "version": "1.0.0",
   "scripts": {
-  "test": "npx htmlhint index.html && npx stylelint style.css"
+  "test": "npx htmlhint index.html && npx stylelint style.css && npx eslint *.js"
 }
 ,
   "devDependencies": {
+    "@eslint/js": "^9.28.0",
+    "eslint": "^9.28.0",
+    "eslint-plugin-react": "^7.37.5",
+    "globals": "^16.2.0",
     "htmlhint": "^1.1.4",
     "stylelint": "^15.10.1",
     "stylelint-config-standard": "^34.0.0"

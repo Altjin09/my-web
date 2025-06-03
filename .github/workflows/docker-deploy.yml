@@ -21,6 +21,12 @@ jobs:
 
       - name: Run HTML and CSS tests
         run: npm test
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run HTML, CSS, and JS linting
+        run: npm test
+ 
 
   build_and_push:
     needs: test

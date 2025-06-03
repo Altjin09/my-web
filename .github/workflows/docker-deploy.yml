@@ -11,8 +11,16 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Run tests
-        run: echo "🧪 Here you can run unit tests"
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20' # Node хувилбар (шинэ)
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run HTML and CSS tests
+        run: npm test
 
   build_and_push:
     needs: test

@@ -14,19 +14,13 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '20' # Node хувилбар (шинэ)
+          node-version: '20'
 
-      - name: Install dependencies
-        run: npm install
-
-      - name: Run HTML and CSS tests
-        run: npm test
       - name: Install dependencies
         run: npm install
 
       - name: Run HTML, CSS, and JS linting
         run: npm test
- 
 
   build_and_push:
     needs: test
@@ -64,4 +58,3 @@ jobs:
     steps:
       - name: Deploy to production
         run: echo "🚀 Deploying to production server..."
-

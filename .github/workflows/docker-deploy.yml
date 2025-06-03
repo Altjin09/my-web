@@ -1,4 +1,4 @@
-name: Build and Deploy Docker Image
+name: CI/CD Pipeline
 
 on:
   push:
@@ -6,12 +6,19 @@ on:
       - master  # эсвэл main
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
+
+      - name: Run tests
+        run: echo "🧪 Here you can run unit tests"
+
+  build_and_push:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
 
       - name: Login to Docker Hub
         uses: docker/login-action@v2
@@ -25,3 +32,22 @@ jobs:
           context: .
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/my-web:latest
+
+  deploy_staging:
+    needs: build_and_push
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to staging
+        run: echo "🚀 Deploying to staging server..."
+
+  deploy_production:
+    needs: deploy_staging
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push'
+    environment:
+      name: production
+      url: https://your-production-url.com
+    steps:
+      - name: Deploy to production
+        run: echo "🚀 Deploying to production server..."
+

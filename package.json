@@ -1,0 +1,12 @@
+{
+  "name": "my-web",
+  "version": "1.0.0",
+  "scripts": {
+    "test": "htmlhint index.html && stylelint style.css"
+  },
+  "devDependencies": {
+    "htmlhint": "^1.1.4",
+    "stylelint": "^15.10.1",
+    "stylelint-config-standard": "^34.0.0"
+  }
+}
